@@ -12,9 +12,8 @@ class AgeMonthPickerDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final items = userType == "Pregnant"
-        ? ["1 month", "2 months", "3 months", "4 months", "5 months", "6 months", "7 months", "8 months", "9+ months"]
-        : ["1 month", "2 months", "3 months", "4 months", "5 months", "6 months", "7 months", "8 months", "9+ months"];
+    final items =[
+         "1 month", "2 months", "3 months", "4 months", "5 months", "6 months", "7 months", "8 months", "9+ months"];
 
     return AlertDialog(
       title: Text("Select ${userType == "Pregnant" ? "Month" : "Baby Age"}"),

@@ -8,7 +8,7 @@ import 'package:mom_pulse_app/modules/authentication/pages/login_screen.dart';
 import 'package:mom_pulse_app/modules/authentication/pages/reset_pass_screen.dart';
 import 'package:mom_pulse_app/modules/authentication/pages/verify_your_email_screen.dart';
 import 'package:mom_pulse_app/modules/layout/camera/screens/camera_screen.dart';
-import 'package:mom_pulse_app/modules/layout/mic/screens/mic_screen.dart';
+import 'package:mom_pulse_app/modules/layout/mic/mic_detection/view/mic_screen.dart';
 import 'package:mom_pulse_app/modules/layout/pages/home/services/daily_exercise/screens/exercise_screen.dart';
 import 'package:mom_pulse_app/modules/layout/pages/home/services/doctor_appointment/screens/doctor_screen.dart';
 import 'package:mom_pulse_app/modules/layout/pages/home/services/doctor_appointment/screens/saved_appointments_screen.dart';
@@ -25,6 +25,7 @@ import 'package:mom_pulse_app/modules/layout/pages/setting/emergency_call/screen
 import 'package:mom_pulse_app/modules/layout/pages/setting/help/screens/faq_screen.dart';
 import 'package:mom_pulse_app/modules/layout/pages/setting/help/screens/help_screen.dart';
 import 'package:mom_pulse_app/modules/layout/pages/setting/notifications/screens/notifications_screen.dart';
+import 'package:mom_pulse_app/modules/layout/pages/setting/notifications/screens/time_notification_screen.dart';
 import 'package:mom_pulse_app/modules/layout/pages/setting/screens/setting_screen.dart';
 import 'package:mom_pulse_app/modules/onboarding/splash/screens/first_splash_screen.dart';
 import 'package:mom_pulse_app/modules/onboarding/splash/screens/second_splash_screen.dart';
@@ -51,7 +52,7 @@ class AppRoutes{
     AppRoutesName.exerciseScreen:(_) => const ExerciseScreen(),
     AppRoutesName.foodScreen:(_) => const FoodScreen(),
     AppRoutesName.cameraScreen:(_) => const CameraScreen(),
-    AppRoutesName.micScreen:(_) => const MicScreen(),
+    AppRoutesName.micScreen:(_) => MicScreen(),
     AppRoutesName.savedAppointmentsScreen:(_) => const SavedAppointmentsScreen(),
     AppRoutesName.addMedicineScreen:(_) => const AddMedicineScreen(),
     AppRoutesName.emergencyCallScreen:(_) => const EmergencyCallScreen(),
@@ -60,6 +61,7 @@ class AppRoutes{
     AppRoutesName.helpScreen:(_) => const HelpScreen(),
     AppRoutesName.aboutUsScreen:(_) => const AboutUsScreen(),
     AppRoutesName.faqScreen:(_) => const FaqScreen(),
+    //AppRoutesName.timeNotificationScreen:(_) => const TimeNotificationScreen(),
 
 
   };

@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mom_pulse_app/core/routes/app_routes_name.dart';
+import 'package:mom_pulse_app/core/service/notification_service.dart';
 import 'package:mom_pulse_app/core/them/app_colors.dart';
 import 'package:mom_pulse_app/modules/authentication/widget/custom_text_form_field.dart';
 import 'package:mom_pulse_app/modules/layout/pages/home/services/doctor_appointment/models/doctor_appointment_model.dart';
@@ -33,14 +36,22 @@ class _DoctorScreenState extends State<DoctorScreen> {
       doctorName: doctorNameController.text,
       description: descriptionController.text,
       date: selectedDate!,
+      // ignore: use_build_context_synchronously
       time: selectedTime!.format(context),
     );
 
-    existing.add(DoctorAppointment.encode([newAppointment]));
-
+    existing.add(json.encode(newAppointment.toMap()));
     await prefs.setStringList('appointments', existing);
+    print("Saved appointments: $existing");
+    NotificationService.scheduleDoctorAppointment(newAppointment);
 
+    // ignore: use_build_context_synchronously
     Navigator.pushNamed(context, AppRoutesName.savedAppointmentsScreen);
+    if (doctorNameController.text.isEmpty || descriptionController.text.isEmpty || selectedDate == null || selectedTime == null) {
+      print("⚠️ Missing data, not saving appointment");
+      return;
+    }
+
   }
 
 

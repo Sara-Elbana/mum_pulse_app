@@ -13,7 +13,7 @@ class AppBarHomeWidget extends StatelessWidget implements PreferredSizeWidget {
       elevation: 0,
       automaticallyImplyLeading: false,
       backgroundColor: AppColors.white,
-      title: Image.asset(AppAssets.mumPulseText,),
+      title: Image.asset(AppAssets.momPulseText1,),
       actions: [
         Row(
           children: [

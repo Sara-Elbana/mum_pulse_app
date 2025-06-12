@@ -6,8 +6,16 @@ import 'package:mom_pulse_app/core/them/app_colors.dart';
 import 'package:mom_pulse_app/modules/authentication/widget/custom_btn.dart';
 import 'package:mom_pulse_app/modules/authentication/widget/custom_text_form_field.dart';
 
-class ResetPassScreen extends StatelessWidget {
+class ResetPassScreen extends StatefulWidget {
   const ResetPassScreen({super.key});
+
+  @override
+  State<ResetPassScreen> createState() => _ResetPassScreenState();
+}
+
+class _ResetPassScreenState extends State<ResetPassScreen> {
+  final newPassController = TextEditingController();
+  final confirmPassController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +64,8 @@ class ResetPassScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const CustomTextFormField(
+                     CustomTextFormField(
+                      controller: newPassController,
                       isPass: true,
                     ),
                     const SizedBox(height: 10,),
@@ -72,13 +81,31 @@ class ResetPassScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const CustomTextFormField(
-                      isPass: true,
+                     CustomTextFormField(
+                       controller: confirmPassController,
+                       isPass: true,
                     ),
                     const SizedBox(height: 60,),
                     CustomBtn(
                       text: "NEXT",
                       onTap: (){
+                        final newPass = newPassController.text.trim();
+                        final confirmPass = confirmPassController.text.trim();
+
+                        if (newPass.isEmpty || confirmPass.isEmpty) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text("Please fill both fields")),
+                          );
+                          return;
+                        }
+
+                        if (newPass != confirmPass) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text("Passwords do not match")),
+                          );
+                          return;
+                        }
+
                         Navigator.pushNamed(context, AppRoutesName.congratScreen);
                       },
                     ),

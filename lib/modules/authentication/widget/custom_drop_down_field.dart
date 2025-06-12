@@ -9,14 +9,13 @@ class CustomDropDownField extends StatefulWidget {
   final Function(String?) onChanged;
   final Color? color;
 
-  const CustomDropDownField({
-    super.key,
-    required this.label,
-    this.value,
-    required this.items,
-    required this.onChanged,
-    this.color
-  });
+  const CustomDropDownField(
+      {super.key,
+      required this.label,
+      this.value,
+      required this.items,
+      required this.onChanged,
+      this.color});
 
   @override
   State<CustomDropDownField> createState() => _CustomDropDownFieldState();
@@ -30,41 +29,39 @@ class _CustomDropDownFieldState extends State<CustomDropDownField> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-            widget.label,
+          widget.label,
           style: GoogleFonts.inter(
-            fontSize: 16,
-            fontWeight: FontWeight.w700,
+            fontSize: 15,
+            fontWeight: FontWeight.w600,
           ),
         ),
         const SizedBox(height: 8),
         DropdownButtonFormField<String>(
           dropdownColor: AppColors.white,
           style: GoogleFonts.inter(
-              color: AppColors.grey,
-              fontSize: 16,
-              fontWeight: FontWeight.w700
-          ),
+              color: AppColors.grey, fontSize: 16, fontWeight: FontWeight.w700),
           value: widget.value,
           onChanged: widget.onChanged,
-          items: widget.items.map(
-                  (item)=>DropdownMenuItem(
+          items: widget.items
+              .map((item) => DropdownMenuItem(
                     value: item,
-                      child: Text(item),
-                  )).toList(),
+                    child: Text(item),
+                  ))
+              .toList(),
           decoration: InputDecoration(
-    contentPadding: const EdgeInsets.symmetric(horizontal: 16),
-    border: OutlineInputBorder(
-    borderRadius: BorderRadius.circular(12),
-    borderSide:  BorderSide(color: borderColor),
-    ),
-    enabledBorder: OutlineInputBorder(
-    borderRadius: BorderRadius.circular(12),
-    borderSide:  BorderSide(color: borderColor),
-    ),
-    focusedBorder: OutlineInputBorder(
-    borderRadius: BorderRadius.circular(12),
-    borderSide:  BorderSide(color: borderColor),
-    ),
+            contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+              borderSide: BorderSide(color: borderColor),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+              borderSide: BorderSide(color: borderColor),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+              borderSide: BorderSide(color: borderColor),
+            ),
           ),
         ),
       ],

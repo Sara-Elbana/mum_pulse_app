@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mom_pulse_app/core/routes/app_routes_name.dart';
@@ -27,13 +29,23 @@ class _SavedAppointmentsScreenState extends State<SavedAppointmentsScreen> {
     List<String> data = prefs.getStringList('appointments') ?? [];
 
     List<DoctorAppointment> loaded = [];
-    for (var item in data) {
-      loaded.addAll(DoctorAppointment.decode(item));
+
+    for (String item in data) {
+      try {
+        final decoded = json.decode(item);
+        if (decoded is Map<String, dynamic>) {
+          loaded.add(DoctorAppointment.fromMap(decoded));
+        }
+      } catch (e) {
+        debugPrint('Error decoding appointment: $e');
+      }
     }
 
     setState(() {
       appointments = loaded;
     });
+
+
   }
 
 

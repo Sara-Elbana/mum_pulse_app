@@ -77,6 +77,7 @@ class _TimePickerWidgetState extends State<TimePickerWidget> {
           Text(
             selectedTime == null
                 ? "Choose Time"
+                // ignore: unnecessary_string_interpolations
                 : '${selectedTime!.format(context)}',
             style: GoogleFonts.inter(
               fontSize: 16,

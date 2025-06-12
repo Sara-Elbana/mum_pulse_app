@@ -19,26 +19,26 @@ class _SecondSplashScreenState extends State<SecondSplashScreen> {
     });
   }
 
-  // @override
-  // void initState() {
-  //    super.initState();
-  //    WidgetsBinding.instance.addPostFrameCallback((_) async{
-  //      if(!mounted) return;
-  //      await _checkFirstTime();
-  //    });
-  // }
+  @override
+  void initState() {
+     super.initState();
+     WidgetsBinding.instance.addPostFrameCallback((_) async{
+       if(!mounted) return;
+       await _checkFirstTime();
+     });
+  }
 
-  // Future<void> _checkFirstTime() async {
-  //   SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   bool isFirstTime = prefs.getBool('isFirstTime') ?? true;
-  //
-  //   if (!isFirstTime) {
-  //     // ignore: use_build_context_synchronously
-  //     Navigator.pushReplacementNamed(context, AppRoutesName.loginScreen);
-  //   } else {
-  //     await prefs.setBool('isFirstTime', false);
-  //   }
-  // }
+  Future<void> _checkFirstTime() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool isFirstTime = prefs.getBool('isFirstTime') ?? true;
+
+    if (!isFirstTime) {
+      // ignore: use_build_context_synchronously
+      Navigator.pushReplacementNamed(context, AppRoutesName.loginScreen);
+    } else {
+      await prefs.setBool('isFirstTime', false);
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -27,6 +27,7 @@ class AppRoutesName{
   static const String helpScreen = "helpScreen";
   static const String aboutUsScreen = "aboutUsScreen";
   static const String faqScreen = "faqScreen";
+  static const String timeNotificationScreen = "timeNotificationScreen";
 
 
 

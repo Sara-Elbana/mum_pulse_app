@@ -90,10 +90,10 @@ class _InformationScreenState extends State<InformationScreen> {
             right: 0,
             child: IgnorePointer(
                 child: Image.asset(
-              AppAssets.button,
-              width: 280,
-              height: 200,
-            )),
+                  AppAssets.button,
+                  width: 280,
+                  height: 200,
+                )),
           ),
           SafeArea(
             child: LayoutBuilder(
@@ -102,7 +102,7 @@ class _InformationScreenState extends State<InformationScreen> {
                   physics: const BouncingScrollPhysics(),
                   child: ConstrainedBox(
                     constraints:
-                        BoxConstraints(minHeight: constraints.maxHeight),
+                    BoxConstraints(minHeight: constraints.maxHeight),
                     child: IntrinsicHeight(
                       child: Padding(
                         padding: const EdgeInsets.all(10.0),
@@ -113,7 +113,7 @@ class _InformationScreenState extends State<InformationScreen> {
                             Text(
                               "Select one choise",
                               style: GoogleFonts.inter(
-                                  fontSize: 30, fontWeight: FontWeight.bold),
+                                  fontSize: 25, fontWeight: FontWeight.w600),
                             ),
                             CustomDropDownField(
                                 label: "Select one choise",
@@ -135,7 +135,7 @@ class _InformationScreenState extends State<InformationScreen> {
                             Text(
                               "Baby’s information",
                               style: GoogleFonts.inter(
-                                  fontSize: 30, fontWeight: FontWeight.bold),
+                                  fontSize: 25, fontWeight: FontWeight.w600),
                             ),
                             if (choice == "Pregnant") ...[
                               CustomDropDownField(
@@ -209,7 +209,8 @@ class _InformationScreenState extends State<InformationScreen> {
                             CustomBtn(
                               text: "Next",
                               onTap: () async {
-                               await saveUserData();
+                                await saveUserData();
+                                if (!mounted) return;
                                 Navigator.pushNamed(context, AppRoutesName.layoutScreen);
                               },
                             ),

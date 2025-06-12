@@ -38,18 +38,17 @@ class AppBarServicesWidget extends StatelessWidget implements PreferredSizeWidge
         style: GoogleFonts.inter(
           fontSize: 20,
           fontWeight: FontWeight.w500,
-          fontStyle: FontStyle.italic,
         ),
       ) : null,
-      actions: showActions
-      ?[
-        IconButton(
-          onPressed: (){
-            Navigator.pushReplacementNamed(context, AppRoutesName.micScreen);
-          },
-          icon: SvgPicture.asset(AppAssets.micIcon),
-        ),
-      ] : null,
+      // actions: showActions
+      // ?[
+      //   IconButton(
+      //     onPressed: (){
+      //       Navigator.pushReplacementNamed(context, AppRoutesName.micScreen);
+      //     },
+      //     icon: SvgPicture.asset(AppAssets.micIcon),
+      //   ),
+      // ] : null,
     );
   }
   @override

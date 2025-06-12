@@ -10,19 +10,19 @@ import 'package:mom_pulse_app/modules/layout/pages/chat_bot/widget/image_picker_
 class ChatInputBar extends StatelessWidget {
   final TextEditingController controller;
   final VoidCallback onSend;
-  final VoidCallback? onMicPressed;
-  final VoidCallback? onPlayPressed;
-  final bool isRecording;
-  final void Function(File)? onImagePicked;
+  //final VoidCallback? onMicPressed;
+  //final VoidCallback? onPlayPressed;
+  //final bool isRecording;
+  //final void Function(File)? onImagePicked;
 
   const ChatInputBar({
     super.key,
     required this.controller,
     required this.onSend,
-    this.onMicPressed,
-    this.onPlayPressed,
-    this.isRecording = false,
-    this.onImagePicked,
+    // this.onMicPressed,
+    // this.onPlayPressed,
+    // this.isRecording = false,
+    // this.onImagePicked,
   });
 
   @override
@@ -51,13 +51,13 @@ class ChatInputBar extends StatelessWidget {
                       ),
                     ),
                   ),
-                  IconButton(
-                    onPressed: onMicPressed,
-                    icon: SvgPicture.asset(AppAssets.micIcon),
-                  ),
-                  ImagePickerWidget(
-                      onImagePicked: onImagePicked!,
-                  ),
+                  // IconButton(
+                  //   onPressed: onMicPressed,
+                  //   icon: SvgPicture.asset(AppAssets.micIcon),
+                  // ),
+                  // ImagePickerWidget(
+                  //     onImagePicked: onImagePicked!,
+                  // ),
 
                   // IconButton(
                   //   onPressed: onMicPressed,

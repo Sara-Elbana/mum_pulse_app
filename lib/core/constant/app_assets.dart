@@ -42,6 +42,7 @@ class AppAssets {
   static const String forget3 = "assets/images/forget3.png";
   static const String forget4 = "assets/images/forget4.png";
   static const String mumPulseText = "assets/images/mumPulse.png";
+  static const String momPulseText1 = "assets/images/momPulseText1.png";
   static const String baby = "assets/images/baby.png";
   static const String baby1 = "assets/images/baby1.png";
   static const String baby2 = "assets/images/baby2.png";
@@ -53,6 +54,21 @@ class AppAssets {
   static const String exercise1 = "assets/images/exercise1.jpg";
   static const String exercise2 = "assets/images/exercise2.jpg";
   static const String exercise3 = "assets/images/exercise3.jpg";
+  static const String momPulseLogo = "assets/images/momPulseLogo.png";
+  static const String backgroundMumPulse = "assets/images/backgroundMumPulse.png";
+  static const String voiceWave1 = "assets/images/voice_wave1.png";
+  static const String voiceWave2 = "assets/images/voice_wave2.png";
+  static const String momText = "assets/images/v03-mom.png";
+  static const String pulseText = "assets/images/v04-pulse.png";
+  static const String pulse = "assets/images/v05-pulse.png";
+
+  //animation
+  static const String pulseAnimation1 = "assets/animations/pulseAnimation1.json";
+  static const String pulseAnimation2 = "assets/animations/pulseAnimation2.json";
+  static const String pulseAnimation3 = "assets/animations/pulseAnimation3.json";
+  static const String pulseAnimation4 = "assets/animations/pulseAnimation4.json";
+  static const String cameraAnimation1 = "assets/animations/cameraAnimation1.json";
+  static const String cameraAnimation2 = "assets/animations/cameraAnimation2.json";
 
 
 

@@ -26,10 +26,12 @@ class HelpScreen extends StatelessWidget {
         if (await canLaunchUrl(gmailUri)) {
           await launchUrl(gmailUri);
         } else {
+          // ignore: avoid_print
           print("Could not launch Gmail either");
         }
       }
     } catch (e) {
+      // ignore: avoid_print
       print("Error launching email: $e");
     }
   }

@@ -20,7 +20,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
-
   String userType = "";
   String ageOrMonth = "";
   double babyHeight = 50.0;
@@ -47,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen>
     );
   }
 
-   void _showWeightPicker() {
+  void _showWeightPicker() {
     showModalBottomSheet(
       context: context,
       shape: const RoundedRectangleBorder(
@@ -63,10 +62,10 @@ class _HomeScreenState extends State<HomeScreen>
             });
             prefs.setString('weight', "$newWeight w");
           },
-         );
-       },
-     );
-   }
+        );
+      },
+    );
+  }
 
   late AnimationController _controller;
 
@@ -82,13 +81,18 @@ class _HomeScreenState extends State<HomeScreen>
 
   void _loadUserInfo() async {
     final prefs = await SharedPreferences.getInstance();
-    setState(() {
-      userType = prefs.getString('choice') ?? "";
-      if (userType == "Pregnant") {
-        ageOrMonth = prefs.getString('month') ?? "";
-      } else if (userType == "Mother") {
-        ageOrMonth = prefs.getString('age') ?? "";
+    final choice = prefs.getString('userType') ?? "Pregnant";
+    String value = "";
+      if (choice == "Pregnant") {
+        value = prefs.getString('month') ?? "3 m";
+      } else if (choice == "Mother") {
+        value = prefs.getString('age') ?? "3 m";
       }
+    //print("Loaded userType: $choice");
+    //print("Loaded ageOrMonth: $value");
+      setState(() {
+        userType = choice;
+        ageOrMonth = value;
       final weightStr = prefs.getString('weight') ?? "3 w";
       final heightStr = prefs.getString('height') ?? "50 h";
       this.babyWeight = double.tryParse(weightStr.split(" ").first) ?? 3.0;
@@ -118,36 +122,43 @@ class _HomeScreenState extends State<HomeScreen>
             Align(
               alignment: Alignment.center,
               child: GestureDetector(
-                onTap: () async{
+                onTap: () async {
+                  if (userType != "Pregnant" && userType != "Mother") {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text("Please set your profile type first."),
+                      ),
+                    );
+                    return;
+                  }
                   String? newValue = await showDialog(
                     context: context,
-                    builder: (_) => AgeMonthPickerDialog(
+                    builder: (context) => AgeMonthPickerDialog(
                       userType: userType,
                       currentValue: ageOrMonth,
                     ),
                   );
-    if (newValue != null) {
-    final prefs = await SharedPreferences.getInstance();
-    setState(() {
-    ageOrMonth = newValue;
-    });
-    if (userType == "Pregnant") {
-    prefs.setString('month', newValue);
-    } else {
-    prefs.setString('age', newValue);
-    }
-    }
-    },
-    child: Text(
-    userType == "Pregnant"
-    ? "You are in $ageOrMonth"
-        : userType == "Mother"
-    ? "Baby Age: $ageOrMonth"
-        : "",
-    style: GoogleFonts.inter(
-    fontSize: 20, fontWeight: FontWeight.w500),
-    ),
-
+                  if (newValue != null) {
+                    final prefs = await SharedPreferences.getInstance();
+                    setState(() {
+                      ageOrMonth = newValue;
+                    });
+                    if (userType == "Pregnant") {
+                      prefs.setString('month', newValue);
+                    } else {
+                      prefs.setString('age', newValue);
+                    }
+                  }
+                },
+                child: Text(
+                  userType == "Pregnant" && ageOrMonth.isNotEmpty
+                      ? "You are in $ageOrMonth"
+                      : userType == "Mother" && ageOrMonth.isNotEmpty
+                      ? "Baby Age: $ageOrMonth"
+                      : "Please select your profile type",
+                  style: GoogleFonts.inter(
+                      fontSize: 20, fontWeight: FontWeight.w500),
+                ),
               ),
             ),
             const SizedBox(
